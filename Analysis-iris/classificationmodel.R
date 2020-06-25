@@ -53,4 +53,17 @@ Model.cv <- predict(Model.cv, TrainingSet)     # Performing cross validation
 
 # Model performance (Displays statistics and the confusion matrix )
 
+Model.training.confusion <- confusionMatrix(Model.training, TrainingSet$Species)
+Model.testing.confusion <- confusionMatrix(Model.testing, TestingSet$Species)
+Model.cv.confusion <- confusionMatrix(Model.cv, TrainingSet$Species)
+
+print(Model.training.confusion)
+print(Model.testing.confusion)
+print(Model.cv.confusion)
+
+# Feature importance
+
+Importance <- varImp(Model)
+plot(Importance)
+plot(Importance, col = "violet")
 
